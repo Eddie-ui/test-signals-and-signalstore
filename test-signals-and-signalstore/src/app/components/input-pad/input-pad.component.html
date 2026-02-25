@@ -1,0 +1,9 @@
+<section id="input-pad">
+  <div>
+    @for(key of characterBoardWithUniqueValue(); track key.label) {
+    <button class="btn" (click)="onClick(key)" [title]="key.label">
+      {{ key.label }}
+    </button>
+    }
+  </div>
+</section>

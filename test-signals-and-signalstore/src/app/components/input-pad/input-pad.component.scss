@@ -1,0 +1,39 @@
+#input-pad {
+  padding: 0.85rem;
+
+  div {
+    max-width: 500px;
+    max-height: 30vh;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 1rem;
+    overflow-y: auto;
+    justify-content: space-around;
+    border: 1px solid #3030308a;
+    border-radius: 8px;
+    background-color: #3030300a;
+
+    @media (max-width: 500px) {
+      max-width: 80vw;
+    }
+  }
+
+  .btn {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #3030308a;
+    box-shadow: 0 2px 10px rgba(34, 34, 34, 0.102);
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 2px 10px rgba(34, 34, 34, 0.202);
+    }
+  }
+}
