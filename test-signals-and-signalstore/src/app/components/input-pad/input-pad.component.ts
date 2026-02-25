@@ -1,4 +1,4 @@
-import { Component, computed, EventEmitter, inject, Output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, EventEmitter, inject, Output, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CharacterBoard } from './input-pad.model';
 import { CharacterSet } from '../../core/constants/characters.constant';
@@ -12,6 +12,7 @@ import { CarryInputStore } from '../../core/store/inputStore';
   templateUrl: './input-pad.component.html',
   styleUrl: './input-pad.component.scss',
   imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputPadComponent {
   store = inject(CarryInputStore);

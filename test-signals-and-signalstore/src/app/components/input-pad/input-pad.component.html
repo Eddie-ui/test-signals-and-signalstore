@@ -1,7 +1,7 @@
 <section id="input-pad">
   @if (showKeyboard) {
     <div>
-      @for (key of characterBoardWithUniqueValue(); track key.label) {
+      @for (key of characterBoardWithUniqueValue(); track $index) {
         <button
           class="btn"
           (click)="onClick(key)"

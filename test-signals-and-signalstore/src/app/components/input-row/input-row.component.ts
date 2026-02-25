@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputFieldLength } from '../../core/constants/fields.constant';
 import { CarryInputStore } from '../../core/store/inputStore';
@@ -11,6 +11,7 @@ import { CarryInput } from '../../core/models/carry-input.model';
   templateUrl: './input-row.component.html',
   styleUrl: './input-row.component.scss',
   imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputRowComponent {
   store = inject(CarryInputStore);
