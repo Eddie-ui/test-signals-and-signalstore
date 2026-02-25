@@ -1,0 +1,27 @@
+<section class="d-flex">
+  @for (value of fieldRows; track value; let i = $index) {
+    <div
+      class="input-display"
+      [class.active]="i === pointerIndex"
+      role="button"
+      (click)="onClickField(i)"
+    >
+      <div class="meta"><span></span> <span></span><span></span></div>
+      <div class="title">{{ inputFieldValue(i).label }}</div>
+      <div class="meta">
+        <span></span> <span>{{ inputFieldValue(i).value || '' }}</span
+        ><span></span>
+      </div>
+    </div>
+  }
+  <div class="input-display">
+    <button role="button" class="delete-btn" (click)="clearField()">Remove</button>
+
+    <div class="meta">
+      <span>{{ total }}</span>
+    </div>
+  </div>
+  <div class="input-display">
+    <button role="button" class="reset-btn" (click)="reset()">Reset</button>
+  </div>
+</section>

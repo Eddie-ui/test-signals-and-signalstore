@@ -1,15 +1,10 @@
-import {
-  Component,
-  computed,
-  EventEmitter,
-  Output,
-  signal,
-} from '@angular/core';
+import { Component, computed, EventEmitter, inject, Output, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CharacterBoard } from './input-pad.model';
 import { CharacterSet } from '../../core/constants/characters.constant';
 import { charToNumber } from '../../core/utils/helpers';
 import { CommonModule } from '@angular/common';
+import { CarryInputStore } from '../../core/store/inputStore';
 
 @Component({
   selector: 'app-input-pad',
@@ -19,8 +14,20 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
 })
 export class InputPadComponent {
+  store = inject(CarryInputStore);
   characterBoardWithUniqueValue = signal<CharacterBoard[]>([]);
-  @Output() keyInputEmit: EventEmitter<CharacterBoard> = new EventEmitter();
+
+  get showKeyboard() {
+    return this.store.showKeyboard();
+  }
+
+  get pointerHighlightKey() {
+    const pointer = this.store.pointerIndex();
+    if (pointer === null) {
+      return;
+    }
+    return this.store.inputMap().get(pointer);
+  }
 
   constructor() {
     const board: CharacterBoard[] = CharacterSet.split('').map((v) => ({
@@ -31,6 +38,7 @@ export class InputPadComponent {
   }
 
   onClick(key: CharacterBoard) {
-    this.keyInputEmit.emit(key);
+    this.store.setInput(key);
+    this.store.carryPointerIndex();
   }
 }
